@@ -1,6 +1,6 @@
 /* Variáveis CSS - facilitar o uso de temas para formatação */
 :root{
-    --imagem-fundo:url(listras_fundo.png);
+    --imagem-fundo: url(listras_fundo.png);
     --fundo-cartao: #fff0f5;
     --cor-texto: #2d3748;
     --cor-primaria: #ff90b5;
@@ -25,19 +25,19 @@ body.modo-escuro{
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 0.3s, color 0.3;
+    transition: background 0.3s, color 0.3s;
 }
 
 .botao{
-    background:var(--cor-primaria);
-    color:black;
-    text-decoration:none;
-    padding: 15px;
+    background: var(--cor-primaria);
+    color: black;
+    text-decoration: none;
+    padding: 12px 18px;
     border-radius: 20px;
     font-weight: bold;
     transition: 0.3s;
-    margin-top: 30px;
 }
+
 .botao:hover{
     background: var(--cor-primaria-destaque);
     transform: scale(1.05);
@@ -54,10 +54,10 @@ body{
 }
 
 .campoPrazo{
-    border:none;
-    padding:2px 5px;
-    cursor:pointer;
-    background-color:transparent;
+    border: none;
+    padding: 2px 5px;
+    cursor: pointer;
+    background-color: transparent;
     color: inherit;
 }
 
@@ -65,14 +65,14 @@ body{
     background: var(--fundo-cartao);
     color: var(--cor-texto);
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 img{
-    max-width: 300px;
+    max-width: 240px;
     border-radius: 20px;
 }
 
@@ -80,12 +80,7 @@ img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
-}
-
-.cabecalho-aplicacao h1{
-    font-size: 1.5rem;
-    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .botao-icone{
@@ -99,29 +94,61 @@ img{
 .caixa-entrada{
     display: flex;
     gap: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-input[type="text"]{
-    flex: 1;
-    padding: 12px 15px;
+input[type="text"], .campo-prioridade{
+    padding: 12px 12px;
     border: 2px solid var(--cor-borda);
     border-radius: 12px;
     outline: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     background: transparent;
     color: var(--cor-texto);
 }
 
-input[type="text"]:focus{
-    border-color: var(--cor-primaria);
+input[type="text"]{
+    flex: 1;
+}
+
+.campo-prioridade{
+    cursor: pointer;
+}
+
+input[type="text"]:focus, .campo-prioridade:focus{
+    border-color: var(--cor-primaria-destaque);
+}
+
+/* Filtros de Tarefas (RF1) */
+.filtros-container {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.botao-filtro {
+    flex: 1;
+    background: transparent;
+    border: 2px solid var(--cor-borda);
+    color: var(--cor-texto);
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.botao-filtro.ativo {
+    background-color: var(--cor-primaria);
+    color: #fff;
+    border-color: var(--cor-primaria-destaque);
 }
 
 .botao-principal{
     background: var(--cor-primaria);
     color: white;
     border: none;
-    padding: 12px 18px;
+    padding: 12px 15px;
     border-radius: 12px;
     font-weight: 600;
     cursor: pointer;
@@ -135,7 +162,7 @@ input[type="text"]:focus{
 
 .lista-tarefas{
     list-style: none;
-    max-height: 280px;
+    max-height: 250px;
     overflow-y: auto;
 }
 
@@ -150,15 +177,20 @@ input[type="text"]:focus{
     animation: aparecer 0.3s ease;
 }
 
+/* Marcação visual por prioridade (RF2) */
+.item-tarefa.prioridade-alta { border-left: 6px solid #be1c1c; }
+.item-tarefa.prioridade-media { border-left: 6px solid #d97706; }
+.item-tarefa.prioridade-baixa { border-left: 6px solid #059669; }
+
 .item-tarefa.concluido span{
     text-decoration: line-through;
     color: var(--cor-concluido);
-
 }
 
 .acoes-tarefa{
     display: flex;
     gap: 8px;
+    align-items: center;
 }
 
 .botao-acao{
@@ -184,9 +216,37 @@ img.rodape-aplicacao{
     max-width: 20px;
 }
 
+/* Estilização do Modal / Dialog nativo */
+dialog.modal-funcionalidades {
+    background-color: var(--fundo-cartao);
+    color: var(--cor-texto);
+    border: 2px solid var(--cor-primaria);
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 380px;
+    width: 90%;
+    box-shadow: 0 20px 25px rgba(0,0,0,0.2);
+    margin: auto;
+}
+
+dialog.modal-funcionalidades::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-conteudo h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.modal-conteudo ul {
+    padding-left: 18px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
 @keyframes aparecer{
     from{
-        opacity: 0; transform: translateY(10px)
+        opacity: 0; transform: translateY(10px);
     }
     to{
         opacity: 1; transform: translateY(0);

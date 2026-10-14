@@ -10,29 +10,70 @@
 <body>
     <div class="cartao-aplicacao">
 
-            <a class="botao" href="apresentacao.html" target="_self">Sobre mim</a>        
+        <div class="topo-botoes">
+            <a class="botao" href="apresentacao.html" target="_self">Sobre mim</a>
+            <!-- Botão para abrir o Modal com as novas funcionalidades -->
+            <button class="botao-icone" id="botao-info" title="Ver Novas Funcionalidades">
+                <i class="fa-solid fa-circle-info"></i>
+            </button>
+        </div>
 
         <header class="cabecalho-aplicacao">
             <img src="tarefas.png" alt="">
-            <button class="botao-icone" id="botao-alternar-tema">
+            <button class="botao-icone" id="botao-alternar-tema" title="Alternar Tema">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </header>
+
+        <!-- Caixa de Entrada atualizada com Prioridade (RF2) -->
         <div class="caixa-entrada">
             <input type="text" id="campo-tarefa" placeholder="O que vamos fazer hoje?..." maxlength="40">
+            <select id="campo-prioridade" class="campo-prioridade" title="Selecione a prioridade">
+                <option value="baixa">Baixa</option>
+                <option value="media" selected>Média</option>
+                <option value="alta">Alta</option>
+            </select>
             <button class="botao-principal" id="botao-adicionar">
                 <i class="fa-solid fa-plus"></i> Adicionar
             </button>
         </div>
+
+        <!-- Filtros de Tarefas (RF1) -->
+        <div class="filtros-container">
+            <button class="botao-filtro ativo" data-filtro="todas">Todas</button>
+            <button class="botao-filtro" data-filtro="pendentes">Pendentes</button>
+            <button class="botao-filtro" data-filtro="concluidas">Concluídas</button>
+        </div>
+
         <ul class="lista-tarefas" id="lista-tarefas">
-            <!-- As tarefas serão inseridas dinamicamente
-             via JavaScript -->
+            <!-- As tarefas serão inseridas dinamicamente via JavaScript -->
         </ul>
+
         <footer class="rodape-aplicacao">
             <span id="contador-tarefas">0 tarefas na lista</span>
-
         </footer>
     </div>
+
+    <!-- Modal / Dialog descritivo das novas funcionalidades -->
+    <dialog id="modal-funcionalidades" class="modal">
+        <div class="modal-conteudo">
+            <h2>Novas Funcionalidades Implementadas:</h2>
+            <hr>
+            <ul>
+                <li>
+                    <strong>1. Filtro de Tarefas por Status (RF1):</strong> 
+                    Adicionados botões de navegação rápida ("Todas", "Pendentes" e "Concluídas") para filtrar dinamicamente a exibição da lista conforme o estado atual de cada tarefa.
+                </li>
+                <li>
+                    <strong>2. Níveis de Prioridade (RF2):</strong> 
+                    Inserido um seletor de prioridade (Baixa, Média e Alta) no momento da criação da tarefa, aplicando marcações visuais customizadas e ordenação inteligente baseada na urgência.
+                </li>
+            </ul>
+            <div class="modal-acoes">
+                <button id="botao-fechar-modal" class="botao-principal">Fechar</button>
+            </div>
+        </div>
+    </dialog>
     
     <script src="script.js"></script>
 </body>
